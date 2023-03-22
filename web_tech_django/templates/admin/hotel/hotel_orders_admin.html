@@ -1,0 +1,46 @@
+{% extends 'admin/base_admin.html' %}
+
+{% block title %}
+    Order
+{% endblock %}
+
+{% block content %}
+
+    <div class="container">
+        <h2>My Hotels</h2>
+        <div class="orders">
+            {% if orders %}
+            <table class="table table-hover table-striped">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">#</th>
+                              <th scope="col">Name</th>
+                              <th scope="col">City</th>
+                              <th scope="col">Class</th>
+                              <th scope="col">Price</th>
+                              <th scope="col"></th>
+                              <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        {% for order in orders %}
+                                <tr>
+                                    <th scope="col">{{ order.id }}</th>
+                                    <td>{{ order.hotel.name }}</td>
+                                    <td>{{ order.hotel.city }}</td>
+                                    <td>{{ order.hotel.hotelClass }} days</td>
+                                    <td>{{ order.hotel.price }} tg</td>
+                                    <td><a href="#" class="btn btn-primary">Payment</a></td>
+                                    <td><a href="{% url 'blog:orderHotelDelete' id=order.id %}" class="btn btn-outline-danger">Delete</a></td>
+                                </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {% else %}
+                    <div class="alert alert-warning d-flex justify-content-center">Tours are not available!</div>
+                {% endif %}
+        </div>
+    </div>
+
+{% endblock %}

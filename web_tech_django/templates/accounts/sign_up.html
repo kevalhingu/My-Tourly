@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Sign Up {% endblock %}
+{#{% block style-link %}{% static 'blog/css/style.css' %}{% endblock %}#}
+
+{% block content %}
+
+<div class="wrapper">
+    <div class="login">
+        <div class="login-form">
+            <form action="#" method="post" class="item__form" style="width: 500px;">
+                {% csrf_token %}
+                    {{ form }}<br>
+                    <input type="submit" value="Sign Up" class="btn">
+                    <br><br>
+                    <div class="login-signup">
+                        <p>Already have an account?!</p>
+                        <a href="{% url 'blog:login' %}" class="btn">Login</a>
+                    </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'admin/base_admin.html' %}
+
+{% block title %} Add Hotel {% endblock %}
+
+{% block content %}
+
+    <div >
+        <h1>New hotel</h1>
+
+        <div style="width: 500px">
+            <form method="post" class="item__form" enctype="multipart/form-data">
+
+                {% csrf_token %}
+
+                {{ form.as_p }}
+
+                <input type="submit" value="Add" class="btn btn-primary">
+
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Hotel Detail {% endblock %}
+
+{% block content %}
+
+    <div class="showcase">
+        <div class="container">
+            <div class="showcase__text">
+                {{ hotel.name }}
+            </div>
+        </div>
+    </div>
+
+    <div class="tour" style="margin: 50px 0;">
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-lg-6 ">
+                    <img class="img-fluid rounded" src="{% static "uploads/" %}{{ hotel.image }}" alt="" height="400px">
+                </div>
+
+                <div class="col-lg-6 ">
+                    <div class="tour__desc">
+                    City: <br><br> {{ hotel.city }}
+                    </div>
+                    <br>
+                    <div > Price for the one person: - {{ hotel.price }}</div>
+                    <br>
+                    <div > Stars: - {{ hotel.hotelClass }}</div>
+                    <br>
+                    <br>
+                    <a href="{% url 'blog:orderHotel' id=hotel.id %}" class="btn">Order</a>
+            </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+{% endblock %}

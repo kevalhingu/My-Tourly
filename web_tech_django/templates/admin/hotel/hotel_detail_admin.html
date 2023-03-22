@@ -1,0 +1,42 @@
+{% extends 'admin/base_admin.html' %}
+{% load static %}
+{% block title %} Hotel Detail {% endblock %}
+
+{% block content %}
+
+    <div class="showcase">
+        <div class="container">
+            <div class="showcase__text">
+                {{ hotel.name }}
+            </div>
+        </div>
+    </div>
+
+    <div class="tour" style="margin: 50px 0;">
+        <div class="container">
+
+            <div class="tour__desc">
+                Name: {{ hotel.name }}
+            </div>
+            <br>
+            <div > Class of the tour:  {{ hotel.hotelClass }}</div>
+            <br>
+            <div > City:  {{ hotel.city }}</div>
+            <br>
+            <div > Price of the tour:  {{ tour.price }}</div>
+            <br>
+
+            <div class="">
+				<img src="{% static "uploads/" %}{{ hotel.image }}" alt="" height="400px">
+            </div>
+
+            <br><hr>
+            <a href="{% url 'blog:hotel_edit' id=hotel.id%}" class="btn btn-primary">Edit</a>
+            <a href="{% url 'blog:hotel_delete' id=hotel.id%}" class="btn btn-danger">Delete</a>
+
+        </div>
+
+
+    </div>
+
+{% endblock %}

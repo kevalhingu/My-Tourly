@@ -1,0 +1,47 @@
+{% extends 'admin/base_admin.html' %}
+
+{% block title %} User Details {% endblock %}
+
+{% block content %}
+
+        <div class="container-fluid">
+            <div class="lead">
+                {{ user }}
+            </div>
+
+            <div class="user__orders">
+                {% if user_orders %}
+                    <table class="table table-hover table-striped">
+                        <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col">#</th>
+                                      <th scope="col">Name</th>
+                                      <th scope="col">Started date</th>
+                                      <th scope="col">Duration</th>
+                                      <th scope="col">Price</th>
+                                      <th scope="col"></th>
+                                      <th scope="col"></th>
+                                </tr>
+                        </thead>
+                        <tbody>
+                            {% for order in user_orders %}
+                                    <tr>
+                                        <th scope="col">{{ order.tour.id }}</th>
+                                        <td>{{ order.tour.name }}</td>
+                                        <td>{{ order.tour.started }}</td>
+                                        <td>{{ order.tour.duration }} days</td>
+                                        <td>{{ order.tour.price }} tg</td>
+                                        <td><a href="#" class="btn btn-primary">Payment</a></td>
+                                    </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    {% else %}
+                        <div class="alert alert-warning d-flex justify-content-center">
+                            User doesn't have any orders!
+                        </div>
+                {% endif %}
+            </div>
+        </div>
+
+{% endblock %}

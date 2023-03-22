@@ -1,0 +1,177 @@
+{% load static %}
+{#{% use %}#}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	 <meta name="viewport"
+     content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+	<title>
+        {% block title %}My Site{% endblock %}
+    </title>
+
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="{% static 'blog/css/extra/bootstrap.min.css' %}">
+
+<link
+   href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+   rel="stylesheet"
+   integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+   crossorigin="anonymous"
+   />
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script> -->
+
+
+<!-- <link rel="stylesheet" href="{% static 'blog/css/extra/mdb.min.css' %}">
+<link rel="stylesheet" href="{% static 'blog/css/extra/style.min.css' %}"> -->
+
+<link rel="stylesheet" href="{% static 'blog/css/index.css' %}">
+
+
+</head>
+
+<body>
+
+{% if messages %}
+
+    {% for message in messages %}
+        <div class="alert alert-warning d-flex justify-content-center" role="alert" style="margin-top: 50px;padding: 25px;">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+{% endif %}
+
+<div class="wrapper">
+
+        <nav id="header" class="navbar navbar-expand-lg navbar-dark fixed-top">
+          <div class="container">
+            <a href="{% url 'blog:index' %}" class="logo navbar-brand ">Tourly - by kevalhingu </a>
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navmenu"
+            >
+              <span class="navbar-toggler-icon "></span>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-end" id="navmenu">
+              <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                  <a href="{% url 'blog:index' %}" class="nav-link {% block active %}{% endblock %}">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a href="{% url 'blog:tours' %}" class="nav-link">Tours</a>
+                </li>
+                <li class="nav-item">
+                  <a href="{% url 'blog:services' %}" class="nav-link">Services</a>
+                </li>
+                {% comment %} <li class="nav-item">
+                  <a href="{% url 'blog:about' %}" class="nav-link">About Us</a> {% endcomment %}
+                </li>
+                <li class="nav-item">
+                  <a href="{% url 'admin:index' %}" class="nav-link">Admin</a>
+                </li>
+                <li class="nav-item">
+                   <a class="nav-link" href="{% url 'blog:base_admin' %}" role="button"><i class="fa fa-user fa-fw"></i></a>
+                </li>
+
+
+              </ul>
+            </div>
+          </div>
+        </nav>
+
+    <div class="content">
+
+        {% block content %}
+
+	    {% endblock %}
+
+    </div>
+
+    <footer class="footer">
+		<div class="container">
+			<div class="footer__row">
+				<div class="footer__body">
+					<div class="footer__logo">
+						<a href="{% url 'blog:index' %}"> Tourly </a>
+					</div>
+					<div class="footer__subtitle">Find out what the best destinations in the Qazaqstan.</div>
+					<div class="footer__soc-media">
+						
+						<a href="https://www.instagram.com/keval_hingu/"><img src="{% static 'blog/img/icons/instagram.png' %}" alt=""></a>
+			
+						<a href="https://www.linkedin.com/in/keval-hingu-499211219/"><img src="{% static 'blog/img/icons/linkedin.png' %}" alt=""></a>
+			
+					</div>
+                    {% now "Y" as current_year %}
+					<div class="footer__rights">Copyright &copy;{{ current_year }} Tourly . All rights reserved. </div>
+				</div>
+				<div class="footer__links">
+					<div class="link-col">
+					<div class="link__title">Tourly </div>
+						<a href="blog/index.html">Home</a>
+						<a href="#">Tours</a>
+						<a href="blog/about.html">About Us</a>
+                        <a href="{% url 'blog:add_tour' %}">Add Tour</a>
+                        <a href="{% url 'blog:base_admin' %}">Admin</a>
+					</div>
+					<div class="link-col">
+						<div class="link__title">Help</div>
+						<a href="#">Privacy Policy</a>
+						<a href="#">Term & Conditions</a>
+                        <a href="{% url 'blog:contact' %}">Contacts</a>
+                        <a href="{% url 'blog:checkout' %}">Checkout</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+</div>
+
+
+
+<script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+      crossorigin="anonymous"
+    ></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+<script>
+
+  // $(document).on("scroll",function(){
+  //   if($(window).scrollTop() === 0)
+  //     $("nav").removeClass("nav-bg");
+  //   else
+  //     $("nav").attr("class", "nav-bg");
+  // });
+
+  document.addEventListener("DOMContentLoaded", function(){
+  window.addEventListener('scroll', function() {
+      if (window.scrollY > 200) {
+        document.getElementById('header').classList.add('bg-primary');
+        // add padding top to show content behind navbar
+        // navbar_height = document.querySelector('.navbar').offsetHeight;
+        // document.body.style.paddingTop = navbar_height + 'px';
+      } else {
+        document.getElementById('header').classList.remove('bg-primary');
+         // remove padding top from body
+        // document.body.style.paddingTop = '0';
+      } 
+  });
+});
+
+ </script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,165 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Main Page{% endblock %}
+
+{% block content %}
+
+    <div class="enjoy">
+				<div class="enjoy__row">
+					<div class="enjoy__body">
+						<div class="enjoy__title">Let's enjoy your <br> vacations</div>
+						<div class="enjoy__text">There are many variations of passages. Find out what the best destinations in the world are as awarded by millions of real.</div>
+					</div>
+					<div class="enjoy__search">
+						<form action="{% url 'blog:search_tours' %}" method="post">
+                            
+							{% csrf_token %}
+							From
+							<select name="tourName" id="search__places">
+                                <option selected value="none">Select name</option>
+                                {% for tour in tours %}
+                                    <option  value="{{ tour.name }}">{{ tour.name }}</option>
+                                {% endfor %}
+							</select>
+							{% csrf_token %}
+							To	
+							<select name="tourName" id="search__places">
+                                <option selected value="none">Select name</option>
+                                {% for tour in tours %}
+                                    <option  value="{{ tour.name }}">{{ tour.name }}</option>
+                                {% endfor %}
+							</select>     
+
+							Travellers
+							<input type="number" name="tourTravellers" id="search__travelers" value="1">
+
+							 Departure
+                            <input type="date" id="search__date" name="tourDate" value="{{ todaysDate|date:"Y-m-d" }}">
+                     <!-- <div>
+                     	<label for="round">
+                     	<input id="round" type="radio" value="">Round
+                     </label>
+                     
+                     <label for="oneway">
+                     	<input id="oneway" type="radio" value="">Oneway
+                     </label>
+                     </div> -->
+
+							<button class="btn__rev" type="submit">
+								Submit
+							<!-- <img src="{% static 'blog/img/icons/search3.png' %}" alt=""> -->
+							</button>
+
+						</form>
+					</div>
+				</div>
+		</div>
+
+    <div class="container">
+
+		<section class="services">
+			<div class="container">
+				<div class="services__header text-center">
+					<h1>Our Best Services</h1>
+					<div class="lead">Why we are the best for our client</div>
+				</div>
+				<div class="services__row">
+					<div class="services__features">
+					<div class="features__item item1">
+						<div class="item__title">A lot of Discount</div>
+						<div class="item__text text">
+							Find out what the best destinations in the world are as awarded by millions of real.
+						</div>
+					</div>
+					<div class="features__item item2">
+						<div class="item__title">Best Guide</div>
+						<div class="item__text text">
+							Find out what the best destinations in the world are as awarded by millions of real.
+						</div>
+					</div>
+					<div class="features__item item3">
+						<div class="item__title">Management</div>
+						<div class="item__text text">
+							Find out what the best destinations in the world are as awarded by millions of real.
+						</div>
+					</div>
+					</div>
+					<div class="services__image">
+						<img src="{% static 'blog/img/enjoy.jpg' %}" alt="">
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<div class="slider">
+
+			<h1 class="h1 text-center title">Our Best Places</h1>
+
+			<div id="demo" class="carousel slide row" data-ride="carousel">
+
+			  <!-- Indicators -->
+			  <ul class="carousel-indicators">
+			    <li data-target="#demo" data-slide-to="0" class="active"></li>
+			    <li data-target="#demo" data-slide-to="1"></li>
+			    <li data-target="#demo" data-slide-to="2"></li>
+			  </ul>
+
+			  <!-- The slideshow -->
+			  <div class="carousel-inner">
+				    <div class="carousel-item active slider__img1 slider__img">
+				      <!-- <img src="img/enjoy.jpg" alt="Los Angeles"> -->
+				    </div>
+				    <div class="carousel-item slider__img2 slider__img">
+				      <!-- <img src="img/showcase.jpg" alt="Chicago"> -->
+				    </div>
+				    <div class="carousel-item slider__img3 slider__img">
+				      <!-- <img src="img/tours1.png" alt="New York"> -->
+				    </div>
+			  </div>
+
+			  <!-- Left and right controls -->
+			  <a class="carousel-control-prev" href="#demo" data-slide="prev">
+			    <span class="carousel-control-prev-icon"></span>
+			  </a>
+			  <a class="carousel-control-next" href="#demo" data-slide="next">
+			    <span class="carousel-control-next-icon"></span>
+			  </a>
+			</div>
+		</div>
+
+		<div class="packages">
+			<div class="container">
+				<div class="packages__header">
+					<div class="packages__title">Our Most Popular Packages</div>
+					<div class="packages__subtitle">Find out what the best destinations in the Qazaqstan</div>
+				</div>
+				<div class="row centered">
+					<div class="col-md-4 packages__column">
+						<img src="{% static 'blog/img/tours/borovoe-1.jpg' %}" alt="" class="img-fluid">
+						<div class="col__body">
+							<div class="col__name">Burabai</div>
+							<div class="col__place">South Qazaqstan</div>
+						</div>
+					</div>
+					<div class="col-md-4 packages__column" >
+						<img src="{% static 'blog/img/tours/altyn-emel_4.jpg' %}" alt="" class="img-fluid">
+						<div class="col__body">
+							<div class="col__name">Ustirt</div>
+							<div class="col__place">Mangistau Oblysy</div>
+						</div>
+					</div>
+					<div class="col-md-4 packages__column">
+						<img src="{% static 'blog/img/tours/ornitology_5.jpg' %}" alt="" class="img-fluid">
+						<div class="col__body">
+							<div class="col__name">Alakol</div>
+							<div class="col__place">Almaty Oblysy</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+    </div>
+
+{% endblock %}

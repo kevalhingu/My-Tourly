@@ -1,0 +1,20 @@
+{% extends 'admin/base_admin.html' %}
+
+{% block title %} Add Tour {% endblock %}
+
+{% block content %}
+
+    <div >
+        <h1>New tour</h1>
+
+        <div style="width: 500px">
+            <form method="post" class="item__form" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            {{ form.as_p }}
+            <input type="submit" value="Add" class="btn btn-outline-primary">
+        </form>
+        </div>
+    </div>
+
+{% endblock %}

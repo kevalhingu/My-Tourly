@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+{% load static %}
+{#{% extends 'admin/base_admin.html' %}#}
+
+{% block title %} Services {% endblock %}
+
+{# {% block link %}#}
+{#        <link rel="stylesheet" href="{% static 'blog/css/style.css' %}">#}
+{#    {% endblock %}#}
+
+{% block content %}
+
+    <div class="showcase">
+		<div class="showcase__block">
+			<div class="showcase__text">
+				Services
+			</div>
+		</div>
+	</div>
+
+        <section class="hotels">
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <div class="col-md-8 text-center hotels__header">
+                    <h2>Hotels</h2>
+                    <p>Find the best hotel that you need!</p>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-9">
+                    <form action="" method="post" class="hotels__form">
+                        {% csrf_token %}
+                        <input type="text" class="form-control" placeholder="City, Name of the Hotel" name="cityOrName">
+                        <select class="form-select" aria-label="Default select example" name="hotelClass">
+                              <option selected value="1">Hotel class</option>
+                              <option value="1">One</option>
+                              <option value="2">Two</option>
+                              <option value="3">Three</option>
+                              <option value="4">Four</option>
+                              <option value="5">Five</option>
+                        </select>
+                        <button type="submit" class="btn__rev">Search</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {% if searched_hotels %}
+        <div class="container mt-4 p-4">
+            <h1 class="d-flex justify-content-center p-4 font-weight-bold display-5">Hotels that you needed!</h1>
+            <div class="row">
+                {% for hotel in searched_hotels %}
+                    <div class="col-md-4 mb-3 card__body">
+                        <div class="card">
+                            <div class="card__img"><img class="img-fluid" alt="100%x280" src="{% static "uploads/" %}{{ hotel.image }}"></div>
+                            <div class="card-body">
+                                <h4 class="card-title">{{ hotel.name }}</h4>
+                                <p class="card-text">{{ hotel.city }}</p>
+                                <p class="card-text">{{ hotel.hotelClass }}-stars</p>
+                                <p class="card-text">{{ hotel.price }}</p>
+                                <a href="{% url 'blog:hotel_detail' id=hotel.id %}" class="btn btn__rev">More</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+			</div>
+        </div>
+    {% endif %}
+
+    <section class="showcases">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6 order-lg-2 showcases__img" style="background-image: url({% static 'blog/img/tours/KazakhEagleHunter.jpg' %})"></div>
+                <div class="col-lg-6 order-lg-1 showcases__text my-auto">
+                    <h2>A lot of Discount</h2>
+                    <p class="lead">Find out what the best destinations in the world are as awarded by millions of real.</p>
+                    <div style="width: 100px;margin-top: 20px;"><button class="btn__rev">More</button></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 showcases__img" style="background-image: url({% static 'blog/img/tours/yourta.jpg' %})"></div>
+                <div class="col-lg-6 showcases__text my-auto">
+                    <h2>Best Guide</h2>
+                    <p class="lead">Find out what the best destinations in the world are as awarded by millions of real.</p>
+                    <div style="width: 100px;margin-top: 20px;"><button class="btn__rev">More</button></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 order-lg-2 showcases__img" style="background-image: url({% static 'blog/img/tours/borovoe-1.jpg' %})"></div>
+                <div class="col-lg-6 order-lg-1 showcases__text my-auto">
+                    <h2>Management</h2>
+                    <p class="lead">Find out what the best destinations in the world are as awarded by millions of real.</p>
+                    <div style="width: 100px;margin-top: 20px;"><button class="btn__rev">More</button></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+{#    <section class="hotel_cards pt-5 pb-5">#}
+{#        <div class="container">#}
+{#            <div class="row">#}
+{#                {% for hotel in hotels %}#}
+{#                    <div class="col-md-4 mb-3 card__body">#}
+{#                        <div class="card">#}
+{#                            <div class="card__img"><img class="img-fluid" alt="100%x280" src="{% static "uploads/" %}{{ hotel.image }}"></div>#}
+{#                            <div class="card-body">#}
+{#                                <h4 class="card-title">{{ hotel.name }}</h4>#}
+{#                                <p class="card-text">{{ hotel.city }}</p>#}
+{#                                <p class="card-text">{{ hotel.hotelClass }}-stars</p>#}
+{#                                <p class="card-text">{{ hotel.price }}</p>#}
+{#                                <button class="btn__rev">More</button>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                {% endfor %}#}
+{#			</div>#}
+{#		</div>#}
+{#    </section>#}
+
+
+{% endblock %}

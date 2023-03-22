@@ -1,0 +1,49 @@
+{% extends 'admin/base_admin.html' %}
+
+{% block title %} Tours {% endblock %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                Tours
+            </div>
+            <div class="card-body">
+                <table class="table table-hover table-striped">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">#</th>
+                              <th scope="col">Name</th>
+                              <th scope="col">Started date</th>
+                              <th scope="col">Duration</th>
+                              <th scope="col">Price</th>
+                              <th scope="col"></th>
+                              <th scope="col"></th>
+                              <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% if tours %}
+                        {% for tour in tours %}
+                                <tr>
+                                    <th scope="row">{{ tour.id }}</th>
+                                    <td>{{ tour.name }}</td>
+                                    <td>{{ tour.started }}</td>
+                                    <td>{{ tour.duration }} days</td>
+                                    <td>{{ tour.price }} tg</td>
+                                    <td><a href="{% url 'blog:tour_edit' id=tour.id %}" class="btn btn-primary">Edit</a></td>
+                                    <td><a href="{% url 'blog:tour_detail' id=tour.id %}" class="btn btn-outline-secondary">View</a></td>
+                                    <td><a href="{% url 'blog:tour_delete' id=tour.id %}" class="btn btn-danger">Delete</a></td>
+                                </tr>
+                        {% endfor %}
+                    {% else %}
+                        <div>Tours are not available!</div>
+                    {% endif %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

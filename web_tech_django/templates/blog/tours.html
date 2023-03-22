@@ -1,0 +1,146 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Tours {% endblock %}
+
+{% block content %}
+
+    <div class="showcase">
+		<div class="showcase__block">
+			<div class="showcase__text">
+				Tours
+			</div>
+		</div>
+	</div>
+
+    <div class="container">
+
+    {% if searched_tours %}
+
+        <div class="tours">
+			<div class="container">
+				<div class="tours__title title text-center">Tours that you needed!</div>
+				<div class="tours__row">
+                 {% for tour in searched_tours %}
+
+					<div class="tours__column">
+						<div class="tours__image">
+							<img src="{% static "uploads/" %}{{ tour.image }}" alt="">
+						</div>
+						<div class="tours__body">
+							<div class="tours__time">{{ tour.duration }} Days</div>
+							<div class="tours__title">{{ tour.name }}</div>
+							<div class="tours__text">{{ tour.description }}</div>
+							<a href="{% url 'blog:detail_view' tour.id %}" class="tours__btn btn">View Tour</a>
+						</div>
+					</div>
+
+                 {% endfor %}
+				</div>
+			</div>
+       </div>
+
+    {% else %}
+        <div class="alert alert-warning text-center mt-4">No such tours available!</div>
+       <div class="tours">
+			<div class="container">
+                <div class="tours__title display-6 title text-center">Other</div>
+				<div class="tours__title display-6 mb-5 title text-center">Our Best Tours</div>
+				<div class="tours__row">
+                 {% for tour in tours %}
+
+					<div class="tours__column">
+						<div class="tours__image">
+							<img src="{% static "uploads/" %}{{ tour.image }}" alt="">
+						</div>
+						<div class="tours__body">
+							<div class="tours__time">{{ tour.duration }} Days</div>
+							<div class="tours__title">{{ tour.name }}</div>
+							<div class="tours__text">{{ tour.description }}</div>
+							<a href="{% url 'blog:detail_view' tour.id %}" class="tours__btn btn">View Tour</a>
+						</div>
+					</div>
+
+                 {% endfor %}
+				</div>
+			</div>
+       </div>
+
+    {% endif %}
+
+           <div class="slider">
+
+			<h1 class="h1 text-center title">Our Best Places</h1>
+
+			<div id="demo" class="carousel slide row" data-ride="carousel">
+
+			  <!-- Indicators -->
+			  <ul class="carousel-indicators">
+			    <li data-target="#demo" data-slide-to="0" class="active"></li>
+			    <li data-target="#demo" data-slide-to="1"></li>
+			    <li data-target="#demo" data-slide-to="2"></li>
+			  </ul>
+
+			  <!-- The slideshow -->
+			  <div class="carousel-inner">
+				    <div class="carousel-item active slider__img1 slider__img">
+				      <!-- <img src="img/enjoy.jpg" alt="Los Angeles"> -->
+				    </div>
+				    <div class="carousel-item slider__img2 slider__img">
+				      <!-- <img src="img/showcase.jpg" alt="Chicago"> -->
+				    </div>
+				    <div class="carousel-item slider__img3 slider__img">
+				      <!-- <img src="img/tours1.png" alt="New York"> -->
+				    </div>
+			  </div>
+
+			  <!-- Left and right controls -->
+			  <a class="carousel-control-prev" href="#demo" data-slide="prev">
+			    <span class="carousel-control-prev-icon"></span>
+			  </a>
+			  <a class="carousel-control-next" href="#demo" data-slide="next">
+			    <span class="carousel-control-next-icon"></span>
+			  </a>
+			</div>
+		</div>
+
+    </div>
+
+
+
+
+
+{#    <h1>Tours</h1>#}
+{#    <br>#}
+{#    <form method="post" class="item__form">#}
+{##}
+{#        {% csrf_token %}#}
+{#        {{ form.name }}<br><hr><br>#}
+{#        {{ form.description }}<br><hr><br>#}
+{#        {{ form.started }}<br><hr><br>#}
+{#        {{ form.price }}<br><hr><br>#}
+{#        {{ form.image }}<br><hr><br>#}
+{##}
+{#        <button type="submit" value="Submit" class="btn btn-primary">Submit</button>#}
+{#    </form>#}
+{#    <hr>#}
+{#    <a href="{% url 'blog:tours' %}" class="btn btn-primary">Show tours</a>#}
+{#    <br>#}
+{#    <hr>#}
+{#    <br>#}
+
+{#    {% if tours %}#}
+{#        {% for tour in tours %}#}
+{#            <div class="alert alert-warning mt-2">#}
+{#                <h2>{{ tour.name }}</h2>#}
+{#                <p>{{ tour.description }}</p>#}
+{#                <h2>{{ tour.started }}</h2>#}
+{#                <h2>{{ tour.duration }} days</h2>#}
+{#                <h2>{{ tour.price }}</h2>#}
+{#                <img src="{% static "uploads/" %}{{ tour.image }}" alt="" width="50px" height="50px">#}
+{#            </div>#}
+{#        {% endfor %}#}
+{#    {% else %}#}
+{#        <div>{{ error }}</div>#}
+{#    {% endif %}#}
+
+{% endblock %}

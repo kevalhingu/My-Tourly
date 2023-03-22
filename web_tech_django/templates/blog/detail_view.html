@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Tour Detail {% endblock %}
+
+{% block content %}
+
+    <div class="showcase">
+        <div class="container">
+            <div class="showcase__text">
+                {{ tour.name }}
+            </div>
+        </div>
+    </div>
+
+    <div class="tour" style="margin: 50px 0;">
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-lg-6 ">
+                    <img class="img-fluid rounded" src="{% static "uploads/" %}{{ tour.image }}" alt="" height="400px">
+                </div>
+
+                <div class="col-lg-6 ">
+                    <div class="tour__desc">
+                    Description: <br><br> {{ tour.description }}
+                    </div>
+                    <br>
+                    <div > Duration of the tour: - {{ tour.duration }}</div>
+                    <br>
+                    <div > Start Day: - {{ tour.started }}</div>
+                    <br>
+                    <div > Price of the tour: - {{ tour.price }}</div>
+                    <br>
+                    <br>
+                    <a href="{% url 'blog:add_to_cart' id=tour.id %}" class="btn">Order</a>
+            </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+{% endblock %}
