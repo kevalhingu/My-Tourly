@@ -1,6 +1,6 @@
 # Project Title
  
-My-Tourly - A responsive tour and travel website built in Django and Python.
+My-Tourly - A responsive tour and travel website built in Django and Python. 
 
 ## Description
 
