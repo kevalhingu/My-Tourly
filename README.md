@@ -8,7 +8,7 @@ My-Tourly is a tour and travel website that allows users to discover and book tr
  
 ## Getting Started 
  
-### Dependencies
+### Dependencies      
 
 * Python 3.6 or higher
 * Django 3.1.7 or higher
