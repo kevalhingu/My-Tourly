@@ -5,7 +5,7 @@ My-Tourly - A responsive tour and travel website built in Django and Python.
 ## Description
    
 My-Tourly is a tour and travel website that allows users to discover and book travel packages, hotels, and transportation services with ease. The website features a functional login module and payment gateway for hassle-free booking.
- 
+   
 ## Getting Started 
  
 ### Dependencies      
