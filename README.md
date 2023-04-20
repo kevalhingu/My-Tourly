@@ -26,7 +26,7 @@ My-Tourly is a tour and travel website that allows users to discover and book tr
 6. Start the development server: `python manage.py runserver`
 
 ### Usage
-
+ 
 1. Navigate to the homepage and browse through the available travel packages, hotels, and transportation services.
 2. Login or create an account to make a booking and proceed to checkout.
 3. Payment can be made through the integrated payment gateway for a hassle-free experience.
