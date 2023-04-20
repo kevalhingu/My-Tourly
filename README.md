@@ -13,7 +13,7 @@ My-Tourly is a tour and travel website that allows users to discover and book tr
 * Python 3.6 or higher
 * Django 3.1.7 or higher
 * PostgreSQL 9.5 or higher (optional)
-
+ 
 ### Installation
 
 1. Clone the repository: `git clone https://github.com/your-username/my-tourly.git`
